@@ -1,13 +1,17 @@
 from flask import Flask  # permite criar o api
 from flask_sqlalchemy import SQLAlchemy  # permite banco de dados
 
+from urllib.parse import quote
+
 # Criar um API flask
 app = Flask(__name__)
 
 # Criar um instância de SQLAlchemy
 # acesso de autenticação unico
 app.config['SECRET_KEY'] = 'FSD2323f#$!SAH'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db' === mudei para supabase este é o original funcionando
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres.sukjxwcevxngxeueechg:' + \
+    quote('Q-5@Lv)Wz?nKGcE')+'@aws-0-us-west-1.pooler.supabase.com:5432/postgres'
 
 db = SQLAlchemy(app)
 db: SQLAlchemy

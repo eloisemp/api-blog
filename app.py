@@ -24,7 +24,8 @@ def token_obrigatorio(f):  # f de função
                 token, app.config['SECRET_KEY'], algorithms=["HS256"])
             autor = Autor.query.filter_by(
                 id_autor=resultado['id_autor']).first()
-        except:
+        except Exception as error:
+            print(error)
             return jsonify({'mensagem': 'Token é inválido'}, 401)
         return f(autor, *args, **kwargs)
     return decorated
