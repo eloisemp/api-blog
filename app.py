@@ -5,6 +5,8 @@ import jwt
 from datetime import datetime, timedelta
 from functools import wraps
 
+# comentário Git
+
 
 def token_obrigatorio(f):  # f de função
     @wraps(f)
